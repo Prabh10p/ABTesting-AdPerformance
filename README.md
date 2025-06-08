@@ -75,7 +75,7 @@ Integrated seasonalities (weekly, monthly, yearly) and campaign-specific holiday
 
 Applied Linear Regression models to predict expected conversions based on ad views and clicks
 Evaluated performance using metrics like R², MAE, and MSE
-## 📈 Results Summary
+# 📈 Results Summary
 
 Following an in-depth analysis of 1,000 advertising campaigns across both Facebook and Google AdWords, the key findings are outlined below:
 
