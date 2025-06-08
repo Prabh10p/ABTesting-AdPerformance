@@ -204,5 +204,3 @@ Based on the comprehensive analysis of Facebook and AdWords campaigns, the follo
 ## ⭐ Support
 
 If you found this project useful, feel free to ⭐ it and share it with others!
-
-> _“Marketing without data is like driving with your eyes closed.” – Dan Zarrella_
