@@ -146,35 +146,6 @@ Following an in-depth analysis of 1,000 advertising campaigns across both Facebo
 
 > 🔍 In summary: While AdWords excels in reach and visibility, Facebook delivers **higher conversion quality**, **better ROI**, and **predictable performance** — making it the more effective platform for campaigns focused on measurable outcomes.
 
-# 🧠 Methodology
-To extract deep, actionable insights, we implement a full-stack analytical pipeline combining modern data science techniques and marketing intelligence:
-
-## 🔍 Exploratory Data Analysis (EDA)
-
-  Distribution of conversions across platforms
-
-  Relationship between views, clicks, and conversions
-  
-  ROI distribution and cost-effectiveness metrics
-## 📊 Statistical Analysis
-
-Calculation of means, medians, correlation coefficients, and standard deviation
-Identification of patterns and anomalies in campaign performance
-
-## 🧪 A/B Hypothesis Testing
-
-Conducted independent two-sample t-tests to determine if Facebook Ads significantly outperform AdWords in conversion metrics
-Verified statistical significance of observed differences
-
-## 🔮 Time Series Forecasting
-
-Utilized Facebook Prophet to forecast future conversion trends based on historical campaign performance
-Integrated seasonalities (weekly, monthly, yearly) and campaign-specific holidays to enhance accuracy
-
-## 🤖 Machine Learning Modeling
-
-Applied Linear Regression models to predict expected conversions based on ad views and clicks
-Evaluated performance using metrics like R², MAE, and MSE
 # 📌 Key Insights
 
 - **Facebook Ads** outperform AdWords in conversion quality
