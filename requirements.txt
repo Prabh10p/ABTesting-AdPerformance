@@ -1,7 +1,10 @@
 streamlit
-scikit-learn
-xgboost
-numpy
 pandas
+numpy
 matplotlib
 seaborn
+scikit-learn
+xgboost
+prophet
+plotly
+Pillow
