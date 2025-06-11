@@ -49,6 +49,7 @@ df = pd.read_csv(url)
 df["date_of_campaign"] = pd.to_datetime(df["date_of_campaign"])
 df.rename(columns={"date_of_campaign": "date"}, inplace=True)
 future_clicks = df.head(1365)
+df = df.head(1000)
 df_forecast = df.copy()
 
 # Page content rendering
@@ -223,13 +224,14 @@ elif st.session_state.active_page == "Forecasting Dashboard":
 
     import plotly.graph_objects as go
 
+    st.subheader('Actual vs Predicted Facebook Conversions Over Time')
     # --- Plot Actual vs Predicted ---
     fig = go.Figure()
 
     fig.add_trace(go.Scatter(
         x=df_test['ds'], y=df_test['y'],
         mode='lines+markers', name='Actual',
-        line=dict(color='green', width=3)
+        line=dict(color='black', width=3)
     ))
 
     fig.add_trace(go.Scatter(
@@ -239,9 +241,8 @@ elif st.session_state.active_page == "Forecasting Dashboard":
     ))
 
     fig.update_layout(
-        title='📈 Actual vs Predicted Conversions Over Time',
         xaxis_title='Date',
-        yaxis_title='Conversions',
+        yaxis_title='Faecebook Conversions',
         template='plotly_white',
         legend=dict(x=0.01, y=0.99),
         hovermode='x unified'
