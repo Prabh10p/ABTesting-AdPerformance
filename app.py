@@ -274,28 +274,26 @@ elif st.session_state.active_page == "Forecasting Dashboard":
     st.pyplot(fig2)
 
 elif st.session_state.active_page == "Regression Analysis":
-
     st.subheader("🔮 Predict Facebook Conversions")
 
-    clicks = st.slider("Number of Clicks", 0, 1000, 300)
-    views = st.slider("Number of Views", 0, 5000, 1200)
+    clicks = st.slider("Number of Clicks", 0, 100000, 300)
 
-    scaler = pickle.load(open("scaler4.pkl", "rb"))
-    model = pickle.load(open("model1.pkl", "rb"))
+    scaler = pickle.load(open("scalerfinal.pkl", "rb"))
+    model_final = pickle.load(open("modelfinal.pkl", "rb"))
 
     if st.button("🎯 Predict Now"):
         try:
-            input_vals = np.array([[clicks, views]])
+            input_vals = np.array([[clicks]])
             scaled = scaler.transform(input_vals)
-            result = model.predict(scaled)
+            result = model_final.predict(scaled)
             st.success(f"✅ Predicted Facebook Conversions: `{int(result[0])}`")
         except Exception as e:
-            st.error("❌ Error in prediction. Please check the model and scaler files.")
+            st.error(f" Prediction error: {e}")
 
     # ----------------- Model Benchmark -----------------
     st.subheader("📉 Model Benchmarking")
 
-    X = df[["facebook_ad_clicks", "facebook_ad_views"]]
+    X = df[["facebook_ad_clicks"]]
     y = df["facebook_ad_conversions"]
 
     scaler_bench = StandardScaler()
@@ -316,19 +314,18 @@ elif st.session_state.active_page == "Regression Analysis":
         r2 = r2_score(y_test, y_pred)
 
         st.markdown(f"""
-            #### 🔍 {name}
-            - RMSE: `{rmse:.2f}`
-            - MAE: `{mae:.2f}`
-            - R²: `{r2:.2f}`
-            """)
+        #### 🔍 {name}
+        - RMSE: `{rmse:.2f}`
+        - MAE: `{mae:.2f}`
+        - R²: `{r2:.2f}`
+        """)
 
-        if name == "XGBoost":
-            fig = px.scatter(
-                x=list(range(len(y_test))),
-                y=[y_test.values, y_pred],
-                labels={"x": "Sample", "value": "Conversions"},
-                title=": Actual vs Predicted"
-            )
-            fig.update_traces(mode='markers', marker=dict(size=7), selector=dict(type='scatter'))
+        if name == "Linear Regression":
+            fig = px.scatter(title="Linear Regression: Actual vs Predicted")
+            fig.add_scatter(x=list(range(len(y_test))), y=y_test.values, mode='markers', name='Actual')
+            fig.add_scatter(x=list(range(len(y_test))), y=y_pred, mode='markers', name='Predicted')
             st.plotly_chart(fig, use_container_width=True)
+
+
+
 
